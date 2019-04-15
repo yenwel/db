@@ -6,13 +6,23 @@ struct SQLScope {}
 
 /// Example scope that implements two commands, greet and quit
 #[cmdr]
-impl SQLScope {   
+impl SQLScope {
+     
+    fn prompt(&self) -> String {
+        "db>".to_string()
+    }   
 
     /// Cmdr command to quit the application by returning CommandResult::Quit
-    #[cmd]
-    fn quit(&self, _args: &[String]) -> CommandResult {
+    #[cmd(quit, help = "Quit the application", alias(exit, x, q))]
+    fn quit_method(&self, _args: &[String]) -> CommandResult {
         println!("Quitting");
         CommandResult::Quit
+    }
+    
+    #[cmd]
+    fn execute_method(&self, _args: &[String]) -> CommandResult {
+
+        CommandResult::Ok
     }
 }
 
