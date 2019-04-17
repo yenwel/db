@@ -57,6 +57,8 @@ fn main() {
 
 struct PrepareResult{ }
 
+
+
 trait Statement {
     fn prepare(args: &[String]) -> Self;
     fn execute();
@@ -78,7 +80,6 @@ impl Statement for DeleteStatement{
     }
 }
 
-
 struct InsertStatement{
     prep : PrepareResult,
 }
@@ -88,6 +89,23 @@ impl Statement for InsertStatement{
     fn prepare(args: &[String]) -> Self
     {
         InsertStatement{prep: PrepareResult{}}
+    }
+    fn execute()
+    {
+        
+    }
+}
+
+
+struct UpdateStatement{
+    prep : PrepareResult,
+}
+
+impl Statement for UpdateStatement{
+
+    fn prepare(args: &[String]) -> Self
+    {
+        UpdateStatement{prep: PrepareResult{}}
     }
     fn execute()
     {
